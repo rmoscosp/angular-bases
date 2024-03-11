@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { v4 as uuid } from 'uuid'
+
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -9,18 +11,19 @@ import { Character } from '../../interfaces/character.interface';
 export class ListComponent {
 
   @Output()
-  public onDelete: EventEmitter<number> = new EventEmitter() ;
+  public onDelete: EventEmitter<string> = new EventEmitter() ;
 
   // @Input()
   // public chararacterList: Character[] = []
   @Input()
   public chararacterList: Character[] = [
-    {name: 'trunks', power: 5000},
+    {id:uuid() ,  name: 'trunks', power: 5000},
   ];
 
-  public onDeleteCharacter(index: number):void {
-    this.onDelete.emit(index);
+  public onDeleteCharacter(id: string):void {
+    this.onDelete.emit(id);
     //console.log(index);
   }
 
 }
+

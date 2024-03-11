@@ -13,6 +13,7 @@ public onNewCharacter: EventEmitter<Character> = new EventEmitter();
 
 
 public character: Character = {
+  id: '',
   name: '',
   power: 0
 };
@@ -28,6 +29,7 @@ emitCharacter(): void{
   this.onNewCharacter.emit(this.character);
 
   this.character = {
+    id: '',
     name: '',
     power: 0
   };
